@@ -270,7 +270,7 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 
 .slider-content i.small-icon{ font-size: 2.5em; }
 
-.slider-content .title i{ transform: translateY(10px); font-size: .8em; color: #E45F74; }
+.slider-content .title i{ font-size: .8em; color: #E45F74; }
 
 
 /* ---------------------------------

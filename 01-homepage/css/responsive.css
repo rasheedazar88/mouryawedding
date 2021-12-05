@@ -43,7 +43,7 @@
 	h4{ font-size: 1.3em; }
 	h5{ font-size: 1.2em; }
 	
-	h1 span {
+	h1 span, h1 .icon-heart {
 		margin: 5px 0;
 	}
 	.pre-title {
