@@ -99,169 +99,18 @@ function isExists(elem) {
   return false;
 }
 
-function initMap() {
-  // Create a new StyledMapType object, passing it an array of styles,
-  // and the name to be displayed on the map type control.
-  var styledMapType = new google.maps.StyledMapType(
-    [
-      {
-        featureType: "administrative",
-        elementType: "all",
-        stylers: [
-          {
-            saturation: "-100",
-          },
-        ],
-      },
-      {
-        featureType: "administrative.province",
-        elementType: "all",
-        stylers: [
-          {
-            visibility: "off",
-          },
-        ],
-      },
-      {
-        featureType: "landscape",
-        elementType: "all",
-        stylers: [
-          {
-            saturation: -100,
-          },
-          {
-            lightness: 65,
-          },
-          {
-            visibility: "on",
-          },
-        ],
-      },
-      {
-        featureType: "poi",
-        elementType: "all",
-        stylers: [
-          {
-            saturation: -100,
-          },
-          {
-            lightness: "50",
-          },
-          {
-            visibility: "simplified",
-          },
-        ],
-      },
-      {
-        featureType: "road",
-        elementType: "all",
-        stylers: [
-          {
-            saturation: "-100",
-          },
-        ],
-      },
-      {
-        featureType: "road.highway",
-        elementType: "all",
-        stylers: [
-          {
-            visibility: "simplified",
-          },
-        ],
-      },
-      {
-        featureType: "road.arterial",
-        elementType: "all",
-        stylers: [
-          {
-            lightness: "30",
-          },
-        ],
-      },
-      {
-        featureType: "road.local",
-        elementType: "all",
-        stylers: [
-          {
-            lightness: "40",
-          },
-        ],
-      },
-      {
-        featureType: "transit",
-        elementType: "all",
-        stylers: [
-          {
-            saturation: -100,
-          },
-          {
-            visibility: "simplified",
-          },
-        ],
-      },
-      {
-        featureType: "water",
-        elementType: "geometry",
-        stylers: [
-          {
-            hue: "#ffff00",
-          },
-          {
-            lightness: -25,
-          },
-          {
-            saturation: -97,
-          },
-        ],
-      },
-      {
-        featureType: "water",
-        elementType: "labels",
-        stylers: [
-          {
-            lightness: -25,
-          },
-          {
-            saturation: -100,
-          },
-        ],
-      },
-    ],
-    { name: "Styled Map" }
-  );
-
-  // Create a map object, and include the MapTypeId to add
-  // to the map type control.
-
-  var uluru = { lat: 56.946285, lng: 24.105078 };
-  var map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
-    center: uluru,
-  });
-
-  var image = "images/google-marker.png";
-  var marker = new google.maps.Marker({
-    position: uluru,
-    map: map,
-    icon: image,
-  });
-  //Associate the styled map with the MapTypeId and set it to display.
-  map.mapTypes.set("styled_map", styledMapType);
-  map.setMapTypeId("styled_map");
-}
 
 $(document).ready(function () {
   
   var number = "+919788053319";
-
+  
   $(".rsvp-btn").click(function (event) {
     event.preventDefault();
     var message = {
       FullName: document.querySelector("#name").value,
       ContactNo: document.getElementById("phone").value,
       Email: document.getElementById("email").value,
-      NoOfGuest: document.getElementById("noofgust").value,
+      NoOfGuest: document.getElementById("noofgust").value+" members",
       Event: document.getElementById("eventname").value,
     };
 
@@ -269,7 +118,7 @@ $(document).ready(function () {
       "https://api.whatsapp.com/send?phone=" +
       number +
       "&text=" +
-      encodeURIComponent(JSON.stringify(message));
+      encodeURIComponent("Dear Friend,\n\nI will be attending "+message.Event +" function with " + message.NoOfGuest +"\n"+ ".\nBest Regards,\n\n" + message.FullName +"\n"+ message.ContactNo +"\n"+ message.Email);
 
     
 		var link =
@@ -277,7 +126,7 @@ $(document).ready(function () {
 		"&subject=" +
 		encodeURIComponent("Inviting you to our Wedding Ceremony") +
 		"&body" +
-		encodeURIComponent(message);
+		encodeURIComponent(message.FullName);
 
 		
 		window.open(url,"_blank");
