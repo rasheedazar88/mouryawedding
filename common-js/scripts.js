@@ -99,18 +99,16 @@ function isExists(elem) {
   return false;
 }
 
-
 $(document).ready(function () {
-  
   var number = "+919788053319";
-  
+
   $(".rsvp-btn").click(function (event) {
     event.preventDefault();
     var message = {
       FullName: document.querySelector("#name").value,
       ContactNo: document.getElementById("phone").value,
       Email: document.getElementById("email").value,
-      NoOfGuest: document.getElementById("noofgust").value+" members",
+      NoOfGuest: document.getElementById("noofgust").value + " members",
       Event: document.getElementById("eventname").value,
     };
 
@@ -118,21 +116,36 @@ $(document).ready(function () {
       "https://api.whatsapp.com/send?phone=" +
       number +
       "&text=" +
-      encodeURIComponent("Dear Friend,\n\nI will be attending "+message.Event +" function with " + message.NoOfGuest +"\n"+ ".\nBest Regards,\n\n" + message.FullName +"\n"+ message.ContactNo +"\n"+ message.Email);
+      encodeURIComponent(
+        "Dear Friend,\n\nI will be attending " +
+          message.Event +
+          " function with " +
+          message.NoOfGuest +
+          "\n" +
+          ".\nBest Regards,\n\n" +
+          message.FullName +
+          "\n" +
+          message.ContactNo +
+          "\n" +
+          message.Email
+      );
 
-    
-		var link =
-		"mailto:rasheedazar88@gmail.com" +
-		"&subject=" +
-		encodeURIComponent("Inviting you to our Wedding Ceremony") +
-		"&body" +
-		encodeURIComponent(message.FullName);
+    var link =
+      "mailto:rasheedazar88@gmail.com" +
+      "&subject=" +
+      encodeURIComponent("Inviting you to our Wedding Ceremony") +
+      "&body" +
+      encodeURIComponent(message.FullName);
 
-		
-		window.open(url,"_blank");
-		// $(location).attr('href', url)
-
-
+    if (
+      message.FullName === "" ||
+      message.ContactNo === "" ||
+      message.Email === ""
+    ) {
+      alert("Cannot bo Empty");
+    } else {
+      window.open(url, "_blank");
+    }
+    // $(location).attr('href', url)
   });
 });
-
