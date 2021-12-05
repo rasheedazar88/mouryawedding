@@ -465,8 +465,8 @@ footer .copyright{ padding: 20px 0 30px; }
 
 
 .dot{
-	width:35px;
-	height:35px;
+	width:30px;
+	height:30px;
 	position:absolute;
 	background: url(https://image.ibb.co/kyUHab/rose.png);
 	background-size: 100% 100%;
@@ -474,9 +474,11 @@ footer .copyright{ padding: 20px 0 30px; }
 
 #container {
 	height: 100vh;
+	width: 100%;
 }
 
 .dot {
 	top: 0;
 	z-index: 9999 !important;
+	
 }
